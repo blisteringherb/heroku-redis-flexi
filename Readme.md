@@ -1,32 +1,33 @@
-# Connect Heroku Redis
+# Heroku Redis Flexi
+This is a fork of the connect-heroku-redis package with minor tweaks.
 
-Connect Heroku Redis is a wrapper for [connect-redis](https://github.com/visionmedia/connect-redis) using Heroku Redis to Go.
-
-See: http://devcenter.heroku.com/articles/redistogo      
+Heroku Redis Flexi is a wrapper for [connect-redis](https://github.com/visionmedia/connect-redis) using any of the Redis products
+that Heroku provides.  Currently it supports openredis, RedisGreen, Redis To Go, MyRedis (beta), and Redis Cloud (beta).
+     
       
 ## Installation
 
-    $ npm install connect-heroku-redis
+    $ npm install heroku-redis-flexi
     
 ## Features
 
-  * Detects Heroku Redis to Go url on the environment and defaults it onto the RedisStore options.
+  * Detects Heroku Redis product url on the environment and defaults it onto the RedisStore options.
   * Defaults to local store if Heroku Redis to Go environment variable is not detected.
     
 ## Examples
 
     var connect = require('connect'), 
-        HerokuRedisStore = require('connect-heroku-redis')(connect);
+        HerokuRedisStore = require('heroku-redis-flexi')(connect);
 
     connect.createServer(
       connect.cookieParser(),
       // 5 minutes
-      connect.session({ store: new HerokuRedisStore, secret: 'keyboard cat' })
+      connect.session({ store: new HerokuRedisStore({product: 'myRedis'}), secret: 'keyboard cat' })
     );
     
 ## License
 
-Copyright (C) 2011 by Michael Hemesath <mike.hemesath@gmail.com>
+Copyright (C) 2012 by Morgan Rich <morgan@framlinggroup.com>
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal

@@ -1,8 +1,8 @@
 {
-  "name": "connect-heroku-redis",
+  "name": "heroku-redis-flexi",
   "description": "A heroku Redis session store wrapper for connect-redis.",
   "version": "0.1.2",
-  "author": "Mike Hemesath <mike.hemesath@gmail.com>",
+  "author": "Morgan Rich <morgan@framlinggroup.com>",
   "keywords": ["heroku", "redis", "connect", "express"],
   "main": "index",
   "engines": { "node": ">= 0.4.0" },
@@ -16,6 +16,6 @@
   },
   "repository": {
       "type": "git"
-    , "url": "git@github.com:mhemesath/connect-heroku-redis.git"
+    , "url": "git@github.com:blisteringherb/heroku-redis-flexi.git"
   }
 }
