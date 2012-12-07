@@ -1,6 +1,6 @@
 /**
- * connect-heroku-redis
- * Copyright(c) 2010 Michael Hemesath <mike.hemesath@gmail.com>
+ * heroku-redis
+ * Copyright(c) 2012 Morgan Rich <morgan@solosuenos.com>
  * MIT Licensed
  */
 
@@ -16,17 +16,20 @@ module.exports = function(connect) {
   
   var RedisStore = require('connect-redis')(connect);
   
+  var product = {myRedis: 'MYREDIS_URL', redisToGo: 'REDISTOGO_URL', openRedis: 'OPENREDIS_URL', redisGreen: 'REDISGREEN', redisCloud: 'REDISCLOUD_URL'};
+
   function ConnectHerokuRedis(options) {
-    var redisToGo = process.env.REDISTOGO_URL ? parse(process.env.REDISTOGO_URL) : false; 
-    console.log("redisToGoURL", redisToGo);
+
+    var redisUrl = process.env[product[options.product]] ? parse(process.env[product[options.product]]) : false;
+    console.log("redisUrl", redisUrl);
     options = options || {};
 
-    if (redisToGo) {
-      options.host = options.host || redisToGo.host;
-      options.port = options.port || redisToGo.port;
+    if (redisUrl) {
+      options.host = options.host || redisUrl.host;
+      options.port = options.port || redisUrl.port;
       
-      if (!options.pass && redisToGo.auth) {
-        options.pass = options.pass || redisToGo.auth.split(":")[1];
+      if (!options.pass && redisUrl.auth) {
+        options.pass = options.pass || redisUrl.auth.split(":")[1];
       }
     }
     console.log("RedisStore options", options);
