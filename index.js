@@ -1,6 +1,7 @@
 /**
- * heroku-redis
- * Copyright(c) 2012 Morgan Rich <morgan@solosuenos.com>
+ * heroku-redis-flexi
+ * A fork of connect-heroku-redis https://github.com/mhemesath/connect-heroku-redis
+ * Copyright(c) 2012 Morgan Rich <morgan@framlinggroup.com>
  * MIT Licensed
  */
 
